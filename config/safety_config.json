@@ -1,0 +1,33 @@
+{
+  "vehicle_classes": [
+    "bicycle",
+    "motorcycle",
+    "auto_rickshaw",
+    "car",
+    "bus",
+    "truck"
+  ],
+  "vru_classes": [
+    "person",
+    "bicycle",
+    "motorcycle"
+  ],
+  "density_thresholds": {
+    "low_max": 4,
+    "moderate_max": 9
+  },
+  "weights": {
+    "density_low": 0,
+    "density_moderate": 1,
+    "density_high": 2,
+    "co_presence": 2,
+    "high_vru_share": 1
+  },
+  "vru_share_threshold": 0.5,
+  "safety_pulse_bands": {
+    "low_max": 1,
+    "medium_max": 3
+  },
+  "privacy_blur_persons": true,
+  "disclaimer": "Safety Pulse is an explainable, configurable rule-based operational indicator (0-5) and is NOT a validated accident-prediction or statistical crash-risk model."
+}

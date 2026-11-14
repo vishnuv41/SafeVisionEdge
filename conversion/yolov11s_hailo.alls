@@ -1,0 +1,20 @@
+# ==============================================================================
+# Hailo-8 Model Script (.alls) for SafeVision YOLOv11-S (7 IDD Road Classes)
+# Target: Hailo-8 AI HAT+ (26 TOPS)
+# ==============================================================================
+
+# 1. Normalization: Input images are uint8 RGB in [0, 255]
+# Subtraction: [0, 0, 0], Division: [255, 255, 255] -> scales to [0, 1]
+normalization1 = normalization([0.0, 0.0, 0.0], [255.0, 255.0, 255.0])
+
+# 2. Optimization Flavor
+model_optimization_flavor(optimization_level=2, compression_level=0)
+
+# 3. Optional on-chip NMS postprocess (uncomment if compiling with Hailo NMS):
+# nms_postprocess(
+#     meta_arch=yolo_v11,
+#     engine=cpu,
+#     nms_scores_threshold=0.25,
+#     nms_iou_threshold=0.45,
+#     classes=7
+# )

@@ -1,0 +1,13 @@
+{
+  "input_shape": [1, 3, 640, 640],
+  "input_dtype": "float32",
+  "color_format": "RGB",
+  "scale_factor": 0.00392156862745098,
+  "letterbox_pad_rgb": [114, 114, 114],
+  "output_shape": [1, 11, 8400],
+  "box_format": "cxcywh_input_pixels",
+  "default_conf_threshold": 0.25,
+  "default_iou_threshold": 0.45,
+  "max_detections": 300,
+  "class_count": 7
+}

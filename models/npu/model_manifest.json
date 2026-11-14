@@ -1,0 +1,60 @@
+{
+  "model_name": "custom_model.hef",
+  "expected_sha256": null,
+  "target_architecture": "HAILO8",
+  "input_shape": [1, 640, 640, 3],
+  "input_layout": "NHWC",
+  "input_dtype": "uint8",
+  "output_format": "HailoNMSByClass",
+  "classes_count": 7,
+  "class_names": [
+    "person",
+    "bicycle",
+    "motorcycle",
+    "auto_rickshaw",
+    "car",
+    "bus",
+    "truck"
+  ],
+  "nms_configuration": {
+    "nms_score_threshold": 0.25,
+    "nms_iou_threshold": 0.45,
+    "max_proposals_per_class": 100
+  },
+  "source_checkpoint": {
+    "file": "models/checkpoints/IDD_YOLOv11S_best.pt",
+    "sha256": "7cde73595172e8b6a71d0071c473d869b7cc036bf835ef03d25303ff8a8791ff",
+    "classes": 7,
+    "architecture": "YOLOv11-S",
+    "smoke_test_detections": {
+      "sample_road_1.jpg": 29,
+      "sample_road_2.jpg": 14
+    }
+  },
+  "exported_onnx": {
+    "file": "models/npu/custom_model.onnx",
+    "sha256": "5831eb58b2d5a30232653db5e6d50b9ce23a32aec416e9acee5551044ef327bd",
+    "input_shape": [1, 3, 640, 640],
+    "output_shape": [1, 11, 8400],
+    "opset": 12,
+    "smoke_test_detections": {
+      "sample_road_1.jpg": 27
+    }
+  },
+  "calibration_dataset": {
+    "file": "conversion/calib_nhwc_uint8.npy",
+    "shape": [256, 640, 640, 3],
+    "dtype": "uint8",
+    "layout": "NHWC",
+    "samples_count": 256,
+    "source_archive": "calib_set_1024x640x640.npy"
+  },
+  "status": "ONNX_EXPORT_VALIDATED_CALIBRATION_EXPANDED_AWAITING_DFC_COMPILATION",
+  "quarantined_files": [
+    {
+      "filename": "models/generic_coco_yolov11s.hef.unapproved",
+      "sha256": "8a500ccc9e2797295dc0cb0c41cd69ae1d728f2190dc51fdfdf8345a4f7fa036",
+      "reason": "Generic 80-class COCO Model Zoo HEF. Lacks 'auto_rickshaw' class and transposes motorcycle/car indices. Strictly rejected for SafeVision 7-class inference."
+    }
+  ]
+}

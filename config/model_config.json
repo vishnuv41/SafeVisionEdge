@@ -1,0 +1,44 @@
+{
+  "system_name": "SafeVision Edge",
+  "target_hardware": {
+    "host_board": "Raspberry Pi 5 Model B",
+    "host_arch": "aarch64",
+    "accelerator": "Hailo-8 AI HAT+",
+    "accelerator_tops": 26,
+    "pci_device_id": "1e60:2864",
+    "hailort_version": "4.24.0"
+  },
+  "classes": [
+    "person",
+    "bicycle",
+    "motorcycle",
+    "auto_rickshaw",
+    "car",
+    "bus",
+    "truck"
+  ],
+  "models": {
+    "cpu": {
+      "file": "models/custom_model.pte",
+      "architecture": "YOLOv11-S",
+      "backend": "ExecuTorch + XNNPACK INT8 PT2E",
+      "sha256": "e9c932aa70edbe3d8065612b576aaa25b4cd86840a3017864461a436d5959b56",
+      "input_shape": [1, 3, 640, 640],
+      "input_layout": "NCHW",
+      "input_dtype": "float32",
+      "output_shape": [1, 11, 8400],
+      "default_confidence_threshold": 0.25,
+      "default_iou_threshold": 0.45
+    },
+    "npu": {
+      "file": "models/npu/custom_model.hef",
+      "target_arch": "hailo8",
+      "input_shape": [1, 640, 640, 3],
+      "input_layout": "NHWC",
+      "input_dtype": "uint8",
+      "output_classes": 7,
+      "default_confidence_threshold": 0.25,
+      "default_iou_threshold": 0.45
+    }
+  }
+}

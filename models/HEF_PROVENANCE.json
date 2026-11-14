@@ -1,0 +1,22 @@
+{
+  "status": "NOT_APPROVED_GENERIC_MODEL",
+  "approved_for_safevision": false,
+  "rejection_reason": "The file 'generic_coco_yolov11s.hef.unapproved' was compiled from generic COCO 80-class pre-trained weights, NOT from the fine-tuned SafeVision 7-class IDD checkpoint. Standard COCO does not include the 'auto_rickshaw' class and has mismatched class indices. It is strictly rejected for SafeVision 7-class inference.",
+  "expected_seven_classes": [
+    "person",
+    "bicycle",
+    "motorcycle",
+    "auto_rickshaw",
+    "car",
+    "bus",
+    "truck"
+  ],
+  "generic_model_classes": 80,
+  "required_action": "Compile the fine-tuned SafeVision checkpoint (outputs/training/IDD_YOLOv11S/weights/best.pt) to ONNX using conversion/export_onnx.py, and then to Hailo-8 HEF using conversion/compile_hef.py. Place the resulting verified 7-class binary at models/custom_model.hef.",
+  "verified_cpu_model": {
+    "file": "custom_model.pte",
+    "sha256": "e9c932aa70edbe3d8065612b576aaa25b4cd86840a3017864461a436d5959b56",
+    "classes": 7,
+    "status": "APPROVED_GROUND_TRUTH"
+  }
+}
